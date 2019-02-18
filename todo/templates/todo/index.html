@@ -1,0 +1,65 @@
+{% load crispy_forms_tags %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+
+  <meta charset="utf-8">
+  <title>{{title}}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+</head>
+
+<body style="background: lightgray">
+
+  {% if messages %}
+  {% for message in messages %}
+  <div class="alert alert-info">
+    <strong>{{message}}</strong>
+  </div>
+  {% endfor %}
+  {% endif %}
+
+  <center>
+    <h1><i>__TODO LIST__</i></h1>
+  </center>
+  <hr />
+  <div class="row">
+
+    <div class="col-md-8" >
+
+      {% for i in list %}
+      <div style="background: lightpink; float: left; border: 1px solid black; padding : 2%; margin: 2%; height: 30rem; width: 30rem; overflow: scroll; text-overflow: ellipsis;">
+        <center><b>{{i.title}}</b></center>
+        <hr/>
+        {{i.date}}
+        <hr/>
+        {{i.details}}
+        <br />
+        <br />
+        <form action="/del/{{i.id}}" method="POST">
+          {% csrf_token %}
+          <button value="remove" type="submit"  class="btn btn-primary" style="float: right;"><span class="glyphicon glyphicon-trash"></span> &nbsp; remove</button>
+        </form>
+
+      </div>
+      {% endfor%}
+    </div>
+
+    <div class="col-md-3" >
+      <form method="POST" style="border:1px solid black; padding: 4%; background: pink;">
+        {% csrf_token %}
+        {{forms|crispy}}
+        <center>
+        <input type="submit" class="btn btn-default" value="submit" />
+      </center>
+      </form>
+    </div>
+  </div>
+</body>
+
+</html>
