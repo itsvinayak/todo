@@ -10,7 +10,35 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <!--style-->
+  <style>
+  .card {
 
+   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),
+               0 6px 20px 0 rgba(0,0,0,0.16);
+   background: lightpink;
+   float: left;
+   border: 1px solid black;
+   padding : 2%;
+   margin: 2%;
+   height: 30rem;
+   width: 30rem;
+   overflow: auto;
+   resize: both;
+   text-overflow: ellipsis;
+  }
+  .card:hover{
+    background: lightblue;
+  }
+
+  .submit_form{
+    border:1px solid black;
+    padding: 4%;
+    background: pink;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),
+                0 6px 20px 0 rgba(0,0,0,0.16);
+  }
+  </style>
 
 </head>
 
@@ -33,7 +61,7 @@
     <div class="col-md-8" >
 
       {% for i in list %}
-      <div style="background: lightpink; float: left; border: 1px solid black; padding : 2%; margin: 2%; height: 30rem; width: 30rem; overflow: scroll; text-overflow: ellipsis;">
+      <div class="card">
         <center><b>{{i.title}}</b></center>
         <hr/>
         {{i.date}}
@@ -51,7 +79,7 @@
     </div>
 
     <div class="col-md-3" >
-      <form method="POST" style="border:1px solid black; padding: 4%; background: pink;">
+      <form class="submit_form" method="POST">
         {% csrf_token %}
         {{forms|crispy}}
         <center>
