@@ -14,15 +14,12 @@
   <style>
   .card {
 
-   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),
-               0 6px 20px 0 rgba(0,0,0,0.16);
+   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.5),
+               0 6px 20px 0 rgba(0,0,0,0.39);
    background: lightpink;
-   float: left;
-   border: 1px solid black;
+   margin-bottom : 5%;
+   border-radius: 25px;
    padding : 2%;
-   margin: 2%;
-   height: 30rem;
-   width: 30rem;
    overflow: auto;
    resize: both;
    text-overflow: ellipsis;
@@ -32,17 +29,19 @@
   }
 
   .submit_form{
-    border:1px solid black;
-    padding: 4%;
+
+    text-align: center;
+    padding: 3%;
     background: pink;
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),
-                0 6px 20px 0 rgba(0,0,0,0.16);
+    border-radius: 25px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.4),
+                0 6px 20px 0 rgba(0,0,0,0.36);
   }
   </style>
 
 </head>
 
-<body style="background: lightgray">
+<body  class="container-fluid">
 
   {% if messages %}
   {% for message in messages %}
@@ -52,13 +51,14 @@
   {% endfor %}
   {% endif %}
 
-  <center>
+  <center class="row">
     <h1><i>__TODO LIST__</i></h1>
+    <hr />
   </center>
-  <hr />
+
   <div class="row">
 
-    <div class="col-md-8" >
+    <div class="col-md-8">
 
       {% for i in list %}
       <div class="card">
@@ -69,17 +69,17 @@
         {{i.details}}
         <br />
         <br />
-        <form action="/del/{{i.id}}" method="POST">
+        <form action="/del/{{i.id}}" method="POST" style=" padding-right: 4%; padding-bottom: 3%;">
           {% csrf_token %}
           <button value="remove" type="submit"  class="btn btn-primary" style="float: right;"><span class="glyphicon glyphicon-trash"></span> &nbsp; remove</button>
         </form>
-
       </div>
       {% endfor%}
     </div>
-
+    <div class="col-md-1"> </div>
     <div class="col-md-3" >
-      <form class="submit_form" method="POST">
+      <div  class="submit_form">
+      <form  method="POST">
         {% csrf_token %}
         {{forms|crispy}}
         <center>
@@ -88,6 +88,7 @@
       </form>
     </div>
   </div>
+</div>
 </body>
 
 </html>
