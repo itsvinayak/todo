@@ -1,7 +1,8 @@
 # todo webapp
 ------------
 
-a very basic todo app to understand how django works
+a todo app created to understand basic of django.
+In this web app one can create notes like Google Keep or Evernote.
 
 Dependencies
 ------------
