@@ -1,4 +1,4 @@
-<h1 style="text-align:center;">TODO WEBAPP</h1>
+<h1 align="center">TODO WEBAPP</h1>
 
 A basic todo app build using Django,In this web app, one can create notes like Google Keep or Evernote.
 
